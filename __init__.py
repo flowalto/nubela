@@ -39,9 +39,8 @@ class NubelaCompany:
                                                                 company_domain=self.company_domain)
 
     def company_details(self):
-        company_linkedin_url = search_company_linkedin_url(company_name=self.company_name, company_domain=self.company_domain)
-        if company_linkedin_url is not None:
-            self.company_details = company_details_from_linkedin_url(company_linkedin_url=company_linkedin_url)
+        if self.company_linkedin_url is not None:
+            self.company_details = company_details_from_linkedin_url(company_linkedin_url=self.company_linkedin_url)
             return(self.company_details)
         else:
             return({""})
