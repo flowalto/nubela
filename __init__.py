@@ -31,10 +31,12 @@ def company_details_from_linkedin_url(company_linkedin_url):
                      })
     return(json.loads(results.text))
 
-class Company:
+class NubelaCompany:
     def __init__(self, company_name, company_domain):
         self.company_name = company_name
         self.company_domain = company_domain
+        self.company_linkedin_url = search_company_linkedin_url(company_name=self.company_name,
+                                                                company_domain=self.company_domain)
 
     def company_details(self):
         company_linkedin_url = search_company_linkedin_url(company_name=self.company_name, company_domain=self.company_domain)
