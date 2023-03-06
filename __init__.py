@@ -42,10 +42,12 @@ def email_lookup_by_linkedin_profile_url(linkedin_profile_url):
 
     return(result.text)
 
-class Company:
+class NubelaCompany:
     def __init__(self, company_name, company_domain):
         self.company_name = company_name
         self.company_domain = company_domain
+        self.company_linkedin_url = search_company_linkedin_url(company_name=self.company_name,
+                                                                company_domain=self.company_domain)
 
     def company_details(self):
         company_linkedin_url = search_company_linkedin_url(company_name=self.company_name, company_domain=self.company_domain)
@@ -54,4 +56,3 @@ class Company:
             return(self.company_details)
         else:
             return({""})
-
