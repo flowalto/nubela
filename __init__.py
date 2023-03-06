@@ -31,6 +31,17 @@ def company_details_from_linkedin_url(company_linkedin_url):
                      })
     return(json.loads(results.text))
 
+# Looks up email given a LinkedIn profile URL.
+# to-do: Using the Nubela interface for now, but could use queuing.
+def email_lookup_by_linkedin_profile_url(linkedin_profile_url):
+    result = requests.get("https://nubela.co/proxycurl/api/linkedin/profile/email",
+                      headers={"Authorization": "Bearer " + api_key},
+                      params={
+                          "linkedin_profile_url": linkedin_profile_url
+                      })
+
+    return(result.text)
+
 class Company:
     def __init__(self, company_name, company_domain):
         self.company_name = company_name
@@ -43,3 +54,4 @@ class Company:
             return(self.company_details)
         else:
             return({""})
+
